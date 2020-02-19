@@ -2,6 +2,8 @@ import React from 'react';
 import { v4 } from 'uuid';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import Moment from 'moment';
+
 
 function NewTicketForm(props) {
   let _names = null;
@@ -10,7 +12,7 @@ function NewTicketForm(props) {
 
   function handleNewTicketFormSubmission(event) {
     event.preventDefault();
-    props.onNewTicketCreation({names: _names.value, location: _location.value, issue: _issue.value, id: v4()});
+    props.onNewTicketCreation({names: _names.value, location: _location.value, issue: _issue.value, id: v4(), timeOpen: new Moment()});
     _names.value = '';
     _location.value = '';
     _issue.value = '';
